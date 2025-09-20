@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spider Security | Elite Digital Defense</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <meta name="description" content="ThreatWeb™ SIEM/XDR, RedHook™ Phishing, Incident Response, Dark Web Monitoring, PenTesting, 2FA Hardening, Onsite Assessments, SpiderBox™ & SpiderVPN." />
+  <style>
+    :root{
+      --bg-dark:#0a0a0a;--bg-card:#141414;--line:#1f1f1f;--text:#f2f2f2;--muted:#a7a7a7;--accent:#d10000;--accent-2:#ff6b6b;--highlight:#ff4040
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+    /* ===== Background layers ===== */
+    .bg-layer{position:fixed;inset:0;z-index:-3;background:radial-gradient(1200px 600px at 50% -10%,rgba(209,0,0,.08),transparent 60%),linear-gradient(#0a0a0a,#090909)}
+    .bg-grid{position:fixed;inset:0;z-index:-2;background-image:linear-gradient(rgba(255,0,0,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,0,0,.08) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(circle at 50% 30%,#000 40%,transparent 75%);opacity:.6}
+    .bg-web{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+    /* ===== Header / Nav ===== */
+    header{position:fixed;top:0;left:0;width:100%;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;backdrop-filter:saturate(120%) blur(10px);background:rgba(10,10,10,.7);border-bottom:1px solid var(--line);z-index:50}
+    .logo{font-weight:900;letter-spacing:.02em;color:#fff}
+    nav{position:relative}
+    nav ul{display:flex;gap:26px;list-style:none}
+    nav a{color:var(--muted);text-decoration:none;font-weight:800;font-size:.98rem;letter-spacing:.02em;transition:color .2s ease}
+    nav a:hover,nav a.active{color:var(--highlight)}
+    .cta{display:inline-block;padding:12px 20px;border-radius:10px;border:2px solid var(--accent);color:#fff;text-decoration:none;font-weight:900;background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 0 0 rgba(209,0,0,.25);transition:transform .2s,box-shadow .2s}
+    .cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(209,0,0,.35)}
+    .menu-btn{display:none;border:0;background:none;color:#fff;font-size:1.8rem}
+
+    main{padding-top:72px}
+    .wrap{width:min(1200px,92%);margin-inline:auto}
+
+    /* ===== Hero ===== */
+    #home{position:relative;min-height:88vh;display:grid;place-items:center;padding:120px 0 80px}
+    #net{position:absolute;inset:0;z-index:0}
+    .hero{position:relative;z-index:1;text-align:center}
+    .hero h1{font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.05;font-weight:900;letter-spacing:-.02em}
+    .hero .grad{background:linear-gradient(90deg,var(--highlight),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{max-width:780px;margin:22px auto 34px;color:var(--muted);font-size:1.15rem}
+    .hero .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .ghost{background:rgba(255,255,255,.04);border:1px solid #272727}
+    .ghost:hover{background:#fff;color:#000;border-color:#fff}
+
+    /* emphasize */
+    .keyword{color:var(--highlight);font-weight:700}
+
+    /* ===== Ticker ===== */
+    .ticker{border-block:1px solid var(--line);background:#101010;overflow:hidden}
+    .marquee{display:flex;width:max-content;gap:36px;padding:16px 0;animation:scroll 38s linear infinite}
+    .marquee span{color:var(--highlight);font-weight:900;white-space:nowrap;letter-spacing:.08em}
+    @keyframes scroll{to{transform:translateX(-50%)}}
+
+    /* ===== Sections / Cards ===== */
+    section h2{font-size:clamp(1.9rem,3.2vw,2.6rem);text-align:center;margin-bottom:10px;font-weight:900;color:var(--highlight)}
+    .sub{color:var(--muted);text-align:center;margin:0 auto 44px;max-width:780px}
+    #platform{padding:96px 0}
+    .grid{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+    .card{background:var(--bg-card);border:1px solid #1c1c1c;border-radius:16px;padding:22px 22px 20px;position:relative;overflow:hidden;transition:transform .15s,border-color .15s,background .15s}
+    .card:hover{transform:translateY(-4px);border-color:#2a2a2a;background:#171717}
+    .card h3{font-size:1.1rem;margin-bottom:8px;display:flex;gap:8px;align-items:center;color:var(--accent-2)}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:2px 10px;border-radius:999px;color:var(--accent);border:1px solid rgba(209,0,0,.35);font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em}
+    .card p{color:#bdbdbd;font-size:.98rem}
+    .card ul{margin-top:10px;color:#a9a9a9;font-size:.95rem;padding-left:18px}
+    .card ul li{margin:6px 0}
+    .tilt{transform-style:preserve-3d;perspective:800px}
+    .depth{transition:transform .2s}
+    .tilt:hover .depth{transform:translateZ(18px)}
+
+    /* ===== Solutions ===== */
+    #solutions{padding:96px 0}
+    .split{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+    .panel{background:var(--bg-card);border:1px solid #1c1c1c;border-radius:16px;padding:26px}
+    .panel h3{margin-bottom:8px;color:var(--accent-2)}
+    .panel p{color:#c9c9c9}
+
+    /* ===== Industries ===== */
+    #industries{padding:96px 0}
+    .industries{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .tag{display:inline-block;background:#121212;border:1px solid #1f1f1f;border-radius:999px;padding:6px 12px;margin:6px 6px 0 0;color:var(--highlight);font-weight:800;font-size:.85rem}
+
+    /* ===== Contact ===== */
+    #contact{padding:96px 0;text-align:center}
+
+    /* ===== Footer ===== */
+    footer{padding:56px 5%;border-top:1px solid var(--line);text-align:center;color:#8a8a8a}
+
+    /* ===== Responsive ===== */
+    @media (max-width:1024px){.grid{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}.industries{grid-template-columns:1fr 1fr}}
+    @media (max-width:720px){nav ul{display:none}.menu-btn{display:block}.grid{grid-template-columns:1fr}.industries{grid-template-columns:1fr}}
+
+    /* ===== Reduced motion ===== */
+    @media (prefers-reduced-motion:reduce){.marquee{animation:none}.card,.cta{transition:none}.tilt:hover .depth{transform:none}}
+  </style>
+</head>
+<body>
+  <div class="bg-layer"></div>
+  <canvas class="bg-web" id="web"></canvas>
+  <div class="bg-grid"></div>
+
+  <header aria-label="Main Navigation">
+    <div class="logo">Spider Security</div>
+    <nav>
+      <ul>
+        <li><a href="#platform">Platform</a></li>
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#industries">Industries</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="cta" href="#contact"><span class="full">Request Consultation</span></a>
+    </nav>
+    <button class="menu-btn" id="menu" aria-label="Open menu">☰</button>
+  </header>
+
+  <main>
+    <section id="home">
+      <canvas id="net" aria-hidden="true"></canvas>
+      <div class="wrap hero">
+        <h1>Digital Defense for <span class="grad">Critical Infrastructure</span>.</h1>
+        <p>We secure <span class="keyword">K‑12</span>, <span class="keyword">healthcare</span>, and <span class="keyword">growing enterprises</span> with a unified stack: <span class="keyword">ThreatWeb™</span> SIEM/XDR, <span class="keyword">RedHook™</span> phishing, Incident Response, Dark Web Intelligence, and custom <span class="keyword">SpiderBox™</span>/<span class="keyword">SpiderVPN</span> deployments.</p>
+        <div class="actions">
+          <a class="cta" href="#contact">Become a Client</a>
+          <a class="cta ghost" href="#platform">Explore Platform</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="marquee wrap"><span>PROACTIVE DEFENSE</span><span>ZERO TRUST</span><span>THREAT INTELLIGENCE</span><span>CLOUD SECURITY</span><span>RAPID INCIDENT RESPONSE</span><span>ENDPOINT DETECTION</span><span>PROACTIVE DEFENSE</span><span>ZERO TRUST</span><span>THREAT INTELLIGENCE</span><span>CLOUD SECURITY</span><span>RAPID INCIDENT RESPONSE</span><span>ENDPOINT DETECTION</span></div>
+    </div>
+
+    <section id="platform" class="wrap">
+      <h2>Unified Security Platform</h2>
+      <p class="sub">One platform securing every angle. Each capability below plugs into <span class="keyword">ThreatWeb™</span> for real‑time detection, response, and executive visibility.</p>
+      <div class="grid" id="products">
+        <article class="card tilt"><div class="depth">
+          <h3><span class="chip">SIEM / XDR / NDR</span>ThreatWeb™ 24/7 SOC</h3>
+          <p>AI‑assisted correlations across endpoints, servers, and cloud with automated active responses.</p>
+          <ul><li>Real‑time dashboards & alerting</li><li>Active Response: block IPs, quarantine files, kill processes</li><li>Integrations: Sysmon, ClamAV, Malwarebytes, Windows/Linux/macOS</li></ul>
+        </div></article>
+        <article class="card tilt"><div class="depth">
+          <h3><span class="chip">Phishing</span>RedHook™ Simulations & Training</h3>
+          <p>Human‑layer defense with realistic campaigns and role‑based training.</p>
+          <ul><li>Risk scoring & coaching</li><li>Email/SMS (smishing) templates</li><li>Compliance‑ready reporting</li></ul>
+        </div></article>
+        <article class="card tilt"><div class="depth">
+          <h3><span class="chip">IR</span>Incident Response & Recovery</h3>
+          <p>24/7 containment, forensics, and rapid rebuilds to minimize downtime and impact.</p>
+          <ul><li>Ransomware playbooks & evidence preservation</li><li>Root‑cause analysis & hardening</li><li>Executive comms & board reporting</li></ul>
+        </div></article>
+        <article class="card tilt"><div class="depth">
+          <h3><span class="chip">Intelligence</span>Dark Web Monitoring</h3>
+          <p>Continuous scans of markets, forums, and dumps for your domains, emails, and VIPs.</p>
+          <ul><li>Credential & data leak alerts</li><li>Insider chatter detection</li><li>Executive exposure reports</li></ul>
+        </div></article>
+        <article class="card tilt"><div class="depth">
+          <h3><span class="chip">Access</span>2FA Setup & Hardening</h3>
+          <p>Deploy Duo Security and enforce strong, bypass‑resistant MFA policies across apps.</p>
+          <ul><li>Organization‑wide rollout</li><li>Conditional access policies</li><li>User onboarding & training</li></ul>
+        </div></article>
+        <article class="card tilt"><div class="depth">
+          <h3><span class="chip">Assessment</span>Onsite Security Assessments</h3>
+          <p>Physical & network walkthroughs with prioritized remediation roadmaps.</p>
+          <ul><li>Server rooms & access control</li><li>Segmentation & wireless posture</li><li>Policy & process validation</li></ul>
+        </div></article>
+        <article class="card tilt"><div class="depth">
+          <h3><span class="chip">Offensive</span>Penetration Testing</h3>
+          <p>Adversary‑style testing across external, internal, web, wireless, and IoT.</p>
+          <ul><li>Exploit proof‑of‑concepts (safe)</li><li>Executive & technical reports</li><li>Retesting to validate fixes</li></ul>
+        </div></article>
+        <article class="card tilt"><div class="depth">
+          <h3><span class="chip">Custom</span>SpiderBox™ & SpiderVPN</h3>
+          <p>Drop‑boxes and secure tunnels for remote monitoring, testing, and access.</p>
+          <ul><li>Auto‑provisioned client profiles</li><li>Honeypots & deception tech</li><li>Branded dashboards & tooling</li></ul>
+        </div></article>
+      </div>
+    </section>
+
+    <section id="solutions" class="wrap">
+      <h2>In‑Depth Solutions</h2>
+      <p class="sub">How your stack works together to stop threats fast.</p>
+      <div class="split">
+        <div class="panel"><h3>ThreatWeb™ Correlation & Active Response</h3><p>Our SOC ingests telemetry from endpoints, servers, and the network edge. Signals are correlated against behavior baselines to reduce noise. Confirmed threats trigger playbooks like IP blocking, file quarantine, account lockout, and ticketing — all with audit trails.</p></div>
+        <div class="panel"><h3>RedHook™ Human Risk Reduction</h3><p>Quarterly phishing waves keep staff sharp. Risky users get targeted coaching while leadership receives trend reporting and policy recommendations to lower click‑through rates across the org.</p></div>
+        <div class="panel"><h3>IR on Standby</h3><p>Our responders are one call away. We coordinate comms, forensics, and recovery steps, then deliver a post‑incident report and hardening plan so the same issue doesn’t happen twice.</p></div>
+        <div class="panel"><h3>Executive Visibility</h3><p>Dashboards translate technical signals into clear business risk. Quarterly reviews align budgets with the controls that move the needle most.</p></div>
+      </div>
+    </section>
+
+    <section id="industries" class="wrap">
+      <h2>Built for Your Environment</h2>
+      <p class="sub">We understand the realities of public education, healthcare, and fast‑moving SMBs.</p>
+      <div class="industries">
+        <article class="card"><h3>K‑12 & Higher‑Ed</h3><p>Protect students and staff while meeting audit requirements.</p><span class="tag">CIPA</span><span class="tag">FERPA</span><span class="tag">State Audits</span></article>
+        <article class="card"><h3>Healthcare</h3><p>Safeguard PHI and maintain uptime for patient care.</p><span class="tag">HIPAA</span><span class="tag">24/7 Monitoring</span><span class="tag">IR Playbooks</span></article>
+        <article class="card"><h3>Public & SMB</h3><p>Right‑sized controls with enterprise discipline.</p><span class="tag">Zero Trust</span><span class="tag">Cloud</span><span class="tag">Endpoint</span></article>
+      </div>
+    </section>
+
+    <section id="contact" class="wrap">
+      <h2>Become Unbreachable</h2>
+      <p class="sub">Talk to a Spider Security expert today to design a defense that fits your mission. For immediate incident response, call any time.</p>
+      <p style="text-align:center;margin:18px 0 26px;color:#bdbdbd">Email: <a href="mailto:kbrummitt@spidersecurity.io" style="color:#fff;text-decoration:none;border-bottom:1px dashed #333">kbrummitt@spidersecurity.io</a> · Phone: <a href="tel:+14237179259" style="color:#fff;text-decoration:none;border-bottom:1px dashed #333">(423) 717‑9259</a></p>
+      <div class="hero actions" style="margin-top:0">
+        <a class="cta" href="mailto:kbrummitt@spidersecurity.io">Email an Expert</a>
+        <a class="cta ghost" href="tel:+14237179259">Call for IR</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Spider Security LLC. All rights reserved.</p>
+  </footer>
+
+  <script>
+  // ===== Mobile menu =====
+  (function(){
+    const btn=document.getElementById('menu');
+    const nav=document.querySelector('header nav');
+    if(!btn||!nav) return;
+    btn.addEventListener('click',()=>{
+      nav.classList.toggle('open');
+      if(nav.classList.contains('open')){
+        nav.style.position='absolute';nav.style.top='72px';nav.style.left='0';nav.style.width='100%';nav.style.background='#0d0d0d';nav.style.borderBottom='1px solid #151515';
+        const ul=nav.querySelector('ul');ul.style.display='flex';ul.style.flexDirection='column';ul.style.gap='18px';ul.style.padding='20px 5%';
+      }else{ nav.removeAttribute('style'); const ul=nav.querySelector('ul'); ul.removeAttribute('style'); }
+    });
+  })();
+
+  // ===== Active link highlighting =====
+  (function(){
+    const links=[...document.querySelectorAll('nav a[href^="#"]')];
+    const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ links.forEach(a=>a.classList.remove('active')); const id='#'+e.target.id; const a=links.find(l=>l.getAttribute('href')===id); a&&a.classList.add('active'); } });
+    },{root:null,rootMargin:'-45% 0px -45% 0px',threshold:0});
+    sections.forEach(s=>obs.observe(s));
+  })();
+
+  // ===== Card tilt =====
+  (function(){
+    const cards=document.querySelectorAll('.card.tilt');
+    const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches; if(reduce) return;
+    cards.forEach(c=>{
+      c.addEventListener('mousemove',e=>{ const r=c.getBoundingClientRect(); const x=(e.clientX-r.left)/r.width; const y=(e.clientY-r.top)/r.height; const rx=(y-.5)*6; const ry=(.5-x)*8; c.style.transform=`perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg)`; });
+      c.addEventListener('mouseleave',()=>{ c.style.transform='translateY(-4px)'; });
+    });
+  })();
+
+  // ===== Hero network canvas =====
+  (function(){
+    const canvas=document.getElementById('net'); if(!canvas) return; const ctx=canvas.getContext('2d');
+    let w,h,pts=[]; const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function resize(){ w=canvas.width=canvas.offsetWidth=canvas.parentElement.clientWidth; h=canvas.height=canvas.parentElement.clientHeight; }
+    function spawn(n){ pts=[]; for(let i=0;i<n;i++){ pts.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}); } }
+    function step(){ ctx.clearRect(0,0,w,h); for(const p of pts){ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>w)p.vx*=-1; if(p.y<0||p.y>h)p.vy*=-1; }
+      const max=(w<720?90:120); ctx.lineWidth=.6; for(let i=0;i<pts.length;i++){ for(let j=i+1;j<pts.length;j++){ const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y; const d=Math.hypot(dx,dy); if(d<max){ ctx.strokeStyle=`rgba(255,255,255,${0.18-d/max})`; ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke(); } } }
+      for(const p of pts){ ctx.beginPath(); ctx.arc(p.x,p.y,1.1,0,Math.PI*2); ctx.fillStyle='rgba(209,0,0,.55)'; ctx.fill(); }
+      requestAnimationFrame(step); }
+    function init(){ resize(); spawn(reduce?18:36); step(); }
+    window.addEventListener('resize',init); init();
+  })();
+
+  // ===== Spiderweb overlay canvas =====
+  (function(){
+    const cv=document.getElementById('web'); if(!cv) return; const ctx=cv.getContext('2d');
+    let w,h,t=0; function resize(){ w=cv.width=innerWidth; h=cv.height=innerHeight; } resize(); window.addEventListener('resize',resize);
+    const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function draw(){ ctx.clearRect(0,0,w,h); ctx.save(); ctx.translate(w/2,h*.28);
+      const rings=6, spokes=16; for(let r=1;r<=rings;r++){ const rad=r*42+Math.sin(t/300+r)*3; ctx.beginPath(); ctx.arc(0,0,rad,0,Math.PI*2); ctx.strokeStyle='rgba(255,0,0,.06)'; ctx.lineWidth=1; ctx.stroke(); }
+      for(let s=0;s<spokes;s++){ const ang=(s/spokes)*Math.PI*2 + Math.sin(t/500)*0.05; ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(Math.cos(ang)*(rings*42+20), Math.sin(ang)*(rings*42+20)); ctx.strokeStyle='rgba(255,0,0,.05)'; ctx.lineWidth=1; ctx.stroke(); }
+      ctx.restore(); t+= reduce?0:1; requestAnimationFrame(draw); }
+    draw();
+  })();
+
+  // ===== Self-check tests (runtime) =====
+  (function(){
+    try{
+      const expected=8; const cards=document.querySelectorAll('#products .card');
+      console.assert(cards.length===expected, `Expected ${expected} product cards, found ${cards.length}.`);
+      const ids=['platform','solutions','industries','contact']; ids.forEach(id=>console.assert(document.getElementById(id), `Missing section: #${id}`));
+      console.info('[Spider Security] Basic UI tests passed.');
+    }catch(e){ console.warn('Self-check tests error:', e); }
+  })();
+  </script>
+</body>
+</html>
