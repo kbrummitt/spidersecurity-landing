@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spider Security | Elite Digital Defense</title>
+
+  <!-- Favicon (ICO only) -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="shortcut icon" href="favicon.ico">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <meta name="description" content="ThreatWeb™ SIEM/XDR, RedHook™ Phishing, Incident Response, Dark Web Monitoring, PenTesting, 2FA Hardening, Onsite Assessments, SpiderBox™ & SpiderVPN." />
   <style>
@@ -16,8 +21,13 @@
     body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg-dark);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 
     /* ===== Background layers ===== */
-    .bg-layer{position:fixed;inset:0;z-index:-3;background:radial-gradient(1200px 600px at 50% -10%,rgba(209,0,0,.08),transparent 60%),linear-gradient(#0a0a0a,#090909)}
-    .bg-grid{position:fixed;inset:0;z-index:-2;background-image:linear-gradient(rgba(255,0,0,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,0,0,.08) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(circle at 50% 30%,#000 40%,transparent 75%);opacity:.6}
+    .bg-layer{position:fixed;inset:0;z-index:-3;background:
+      radial-gradient(1200px 600px at 50% -10%,rgba(209,0,0,.08),transparent 60%),
+      linear-gradient(#0a0a0a,#090909)}
+    .bg-grid{position:fixed;inset:0;z-index:-2;background-image:
+      linear-gradient(rgba(255,0,0,.08) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,0,0,.08) 1px,transparent 1px);
+      background-size:48px 48px;mask-image:radial-gradient(circle at 50% 30%,#000 40%,transparent 75%);opacity:.6}
     .bg-web{position:fixed;inset:0;z-index:-1;pointer-events:none}
     .scanlines{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.06;background:repeating-linear-gradient(0deg,rgba(255,0,0,.0) 0px,rgba(255,0,0,.0) 2px,rgba(255,0,0,.15) 3px,rgba(255,0,0,.0) 4px);animation:scan 8s linear infinite}
     @keyframes scan{0%{background-position-y:0}100%{background-position-y:400px}}
@@ -27,7 +37,7 @@
 
     /* Brand logo (uses logo.png) */
     .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .brand img{height:120px;width:auto;display:block;filter:drop-shadow(0 0 8px rgba(209,0,0,.35))}
+    .brand img{height:34px;width:auto;display:block;filter:drop-shadow(0 0 8px rgba(209,0,0,.35))}
     .brand .wordmark{font-weight:900;letter-spacing:.02em;color:#fff}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
@@ -37,10 +47,7 @@
 
     .header-cta{padding:6px 14px;border-radius:6px;background:var(--accent);color:#fff;font-weight:800;text-decoration:none;font-size:.85rem;transition:background .2s,transform .2s,box-shadow .2s;white-space:nowrap;box-shadow:0 0 0 0 rgba(209,0,0,.0);animation:pulse 3.2s ease-in-out infinite}
     .header-cta:hover{background:var(--highlight);transform:translateY(-2px);box-shadow:0 3px 10px rgba(209,0,0,.35)}
-    @keyframes pulse{
-      0%,100%{box-shadow:0 0 0 0 rgba(209,0,0,.0)}
-      50%{box-shadow:0 0 18px 2px rgba(209,0,0,.35)}
-    }
+    @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(209,0,0,.0)}50%{box-shadow:0 0 18px 2px rgba(209,0,0,.35)}}
 
     /* Dropdown icon beside CTA */
     .dropdown-btn{padding:6px 10px;border-radius:6px;background:#1e1e1e;color:var(--accent);font-weight:900;font-size:1.2rem;cursor:pointer;border:1px solid #333;line-height:1}
@@ -57,7 +64,7 @@
     #home{position:relative;min-height:88vh;display:grid;place-items:center;padding:120px 0 80px}
     #net{position:absolute;inset:0;z-index:0}
     .hero{position:relative;z-index:1;text-align:center}
-    .hero h1{font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.05;font-weight:900;letter-spacing:-.02em}
+    .hero h1{font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.05;font-weight:900;letter-spacing:-.02em;animation:glow 5s ease-in-out infinite}
     .hero .grad{background:linear-gradient(90deg,var(--highlight),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero p{max-width:780px;margin:22px auto 34px;color:var(--muted);font-size:1.12rem}
     .hero .actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
@@ -66,6 +73,15 @@
     .ghost{background:rgba(255,255,255,.04);border:1px solid #272727}
     .ghost:hover{background:#fff;color:#000;border-color:#fff}
     .keyword{color:var(--highlight);font-weight:700}
+    @keyframes glow{
+      0%,100%{text-shadow:0 0 0 rgba(255,64,64,0)}
+      50%{text-shadow:0 0 14px rgba(255,64,64,.35)}
+    }
+
+    /* ===== Section divider strip ===== */
+    .divider{height:2px;background:
+      linear-gradient(90deg,transparent,rgba(255,64,64,.5),transparent);
+      filter:blur(.2px);margin:34px 0}
 
     /* ===== Ticker ===== */
     .ticker{border-block:1px solid var(--line);background:#101010;overflow:hidden}
@@ -74,12 +90,22 @@
     @keyframes scroll{to{transform:translateX(-50%)}}
 
     /* ===== Sections / Cards ===== */
-    section h2{font-size:clamp(1.9rem,3.2vw,2.6rem);text-align:center;margin-bottom:10px;font-weight:900;color:var(--highlight)}
+    section h2{font-size:clamp(1.9rem,3.2vw,2.6rem);text-align:center;margin-bottom:10px;font-weight:900;color:var(--highlight);position:relative}
+    section h2::after{content:"";display:block;height:3px;width:120px;margin:12px auto 0;background:
+      linear-gradient(90deg,transparent,var(--highlight),transparent);opacity:.6;animation:wipe 5s ease-in-out infinite}
+    @keyframes wipe{0%{transform:scaleX(.2)}50%{transform:scaleX(1)}100%{transform:scaleX(.2)}}
     .sub{color:var(--muted);text-align:center;margin:0 auto 44px;max-width:780px}
     #platform{padding:96px 0}
     .grid{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
-    .card{background:var(--bg-card);border:1px solid #1c1c1c;border-radius:16px;padding:22px 22px 20px;position:relative;overflow:hidden;transition:transform .15s,border-color .15s,background .15s}
-    .card:hover{transform:translateY(-4px);border-color:#2a2a2a;background:#171717}
+    .card{background:var(--bg-card);border:1px solid #1c1c1c;border-radius:16px;padding:22px 22px 20px;position:relative;overflow:hidden;transition:transform .15s,border-color .15s,background .15s,box-shadow .2s}
+    .card:hover{transform:translateY(-4px);border-color:#2a2a2a;background:#171717;box-shadow:0 10px 26px rgba(209,0,0,.12)}
+    /* corner web accent */
+    .card::before{content:"";position:absolute;top:-20px;right:-20px;width:90px;height:90px;border-radius:50%;border:1px dashed rgba(255,64,64,.28)}
+    .card::after{content:"";position:absolute;top:0;right:0;width:0;height:0;border-left:26px solid transparent;border-top:26px solid rgba(255,64,64,.08)}
+    /* scanline overlay on hover */
+    .card:hover .scan{opacity:.12;transform:translateY(-100%)}
+    .scan{pointer-events:none;position:absolute;inset:0;background:linear-gradient( to bottom, transparent 0%, rgba(255,255,255,.25) 50%, transparent 100% );mix-blend-mode:overlay;opacity:0;transform:translateY(100%);transition:transform .6s ease,opacity .6s ease}
+
     .card h3{font-size:1.06rem;margin-bottom:8px;display:flex;gap:8px;align-items:center;color:var(--accent-2)}
     .chip{display:inline-flex;align-items:center;gap:8px;padding:2px 10px;border-radius:999px;color:var(--accent);border:1px solid rgba(209,0,0,.35);font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em}
     .card p{color:#bdbdbd;font-size:.98rem}
@@ -89,7 +115,8 @@
     /* ===== Solutions ===== */
     #solutions{padding:96px 0}
     .split{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
-    .panel{background:var(--bg-card);border:1px solid #1c1c1c;border-radius:16px;padding:26px}
+    .panel{background:var(--bg-card);border:1px solid #1c1c1c;border-radius:16px;padding:26px;position:relative;overflow:hidden}
+    .panel::after{content:"";position:absolute;left:-40%;top:-40%;width:180%;height:180%;background:radial-gradient(300px 200px at 10% 10%,rgba(255,64,64,.06),transparent 60%);pointer-events:none}
     .panel h3{margin-bottom:8px;color:var(--accent-2)}
     .panel p{color:#c9c9c9}
 
@@ -129,23 +156,19 @@
     .spider{position:fixed;top:-70px;right:var(--sx,14%);width:18px;height:18px;z-index:45;transform:translateY(0);animation:spider-drop 14s ease-in-out infinite}
     .spider .thread{position:absolute;top:-220px;left:50%;width:1px;height:240px;background:rgba(255,255,255,.15);transform:translateX(-50%)}
     .spider .body{position:absolute;inset:0;border-radius:50% 50% 45% 45%;background:#0c0c0c;border:1px solid #8a0000;box-shadow:inset 0 0 6px rgba(255,64,64,.5),0 0 6px rgba(209,0,0,.35)}
-    .spider .leg{position:absolute;width:12px;height:1px;background:#6a0000;top:6px}
-    .spider .leg.l1{left:-10px;transform:rotate(20deg)}
-    .spider .leg.l2{left:-10px;top:10px;transform:rotate(-10deg)}
-    .spider .leg.r1{right:-10px;transform:rotate(-20deg)}
-    .spider .leg.r2{right:-10px;top:10px;transform:rotate(10deg)}
-    @keyframes spider-drop{
-      0%,16%{transform:translateY(0)}
-      32%{transform:translateY(130px)}
-      48%{transform:translateY(0)}
-      100%{transform:translateY(0)}
-    }
+    .spider .leg{position:absolute;width:12px;height:1px;background:#6a0000;top:6px;transform-origin:0 50%}
+    .spider .leg.l1{left:-10px;animation:leg 1.8s ease-in-out infinite}
+    .spider .leg.l2{left:-10px;top:10px;animation:leg 2.2s ease-in-out infinite reverse}
+    .spider .leg.r1{right:-10px;animation:leg 2s ease-in-out infinite}
+    .spider .leg.r2{right:-10px;top:10px;animation:leg 1.6s ease-in-out infinite reverse}
+    @keyframes leg{0%,100%{transform:rotate(15deg)}50%{transform:rotate(-15deg)}}
+    @keyframes spider-drop{0%,16%{transform:translateY(0)}32%{transform:translateY(130px)}48%{transform:translateY(0)}100%{transform:translateY(0)}}
 
     /* ===== Responsive ===== */
     @media (max-width:1200px){.why-grid{grid-template-columns:repeat(2,1fr)}.compliance-grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:1024px){.grid{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}.industries{grid-template-columns:1fr 1fr}}
     @media (max-width:720px){.grid{grid-template-columns:1fr}.industries{grid-template-columns:1fr}}
-    @media (prefers-reduced-motion:reduce){.marquee{animation:none}.cta,.header-cta{transition:none}.scanlines{animation:none}.spider{animation:none}}
+    @media (prefers-reduced-motion:reduce){.marquee{animation:none}.cta,.header-cta{transition:none}.scanlines{animation:none}.spider{animation:none}.hero h1{animation:none}}
   </style>
 </head>
 <body>
@@ -192,39 +215,40 @@
           <a class="cta ghost" href="#platform">Explore Platform</a>
         </div>
       </div>
+      <div class="divider" aria-hidden="true"></div>
     </section>
 
     <div class="ticker" aria-hidden="true">
       <div class="marquee wrap"><span>PROACTIVE DEFENSE</span><span>ZERO TRUST</span><span>THREAT INTELLIGENCE</span><span>CLOUD SECURITY</span><span>RAPID INCIDENT RESPONSE</span><span>ENDPOINT DETECTION</span><span>PROACTIVE DEFENSE</span><span>ZERO TRUST</span><span>THREAT INTELLIGENCE</span><span>CLOUD SECURITY</span><span>RAPID INCIDENT RESPONSE</span><span>ENDPOINT DETECTION</span></div>
     </div>
 
-    <section id="why" class="wrap">
+    <section id="why" class="wrap reveal">
       <h2>Why Spider Security?</h2>
       <p class="sub">Elite cyber defense engineered for today’s threat landscape. We build layered security that stops real attackers, not just audits.</p>
       <div class="why-grid">
-        <article class="card why"><h3><span class="icon">🛡️</span>Zero Trust by Design</h3><p>Least-privilege access, continuous verification, and segmented networks limit blast radius.</p></article>
-        <article class="card why"><h3><span class="icon">⚡</span>Rapid Incident Response</h3><p>24/7 containment and recovery with playbooks for ransomware, BEC, and insider threats.</p></article>
-        <article class="card why"><h3><span class="icon">🔍</span>Intelligence-Driven</h3><p>Dark web monitoring, brand protection, and credential leak detection for your domains and VIPs.</p></article>
-        <article class="card why"><h3><span class="icon">📊</span>Executive-Ready Reporting</h3><p>Dashboards and board-level summaries that connect security controls to business risk.</p></article>
+        <article class="card"><div class="scan"></div><h3><span class="icon">🛡️</span>Zero Trust by Design</h3><p>Least-privilege access, continuous verification, and segmented networks limit blast radius.</p></article>
+        <article class="card"><div class="scan"></div><h3><span class="icon">⚡</span>Rapid Incident Response</h3><p>24/7 containment and recovery with playbooks for ransomware, BEC, and insider threats.</p></article>
+        <article class="card"><div class="scan"></div><h3><span class="icon">🔍</span>Intelligence-Driven</h3><p>Dark web monitoring, brand protection, and credential leak detection for your domains and VIPs.</p></article>
+        <article class="card"><div class="scan"></div><h3><span class="icon">📊</span>Executive-Ready Reporting</h3><p>Dashboards and board-level summaries that connect security controls to business risk.</p></article>
       </div>
     </section>
 
-    <section id="platform" class="wrap">
+    <section id="platform" class="wrap reveal">
       <h2>Unified Security Platform</h2>
       <p class="sub">One platform securing every angle. Each capability below plugs into <span class="keyword">ThreatWeb™</span> for real-time detection, response, and executive visibility.</p>
       <div class="grid" id="products">
-        <article class="card"><h3><span class="chip">SIEM / XDR / NDR</span>ThreatWeb™ 24/7 SOC</h3><p>AI-assisted correlations across endpoints, servers, and cloud with automated active responses.</p><ul><li>Real-time dashboards & alerting</li><li>Active Response: block IPs, quarantine files, kill processes</li><li>Integrations: Sysmon, ClamAV, Malwarebytes, Windows/Linux/macOS</li></ul></article>
-        <article class="card"><h3><span class="chip">Phishing</span>RedHook™ Simulations & Training</h3><p>Human-layer defense with realistic campaigns and role-based training.</p><ul><li>Risk scoring & coaching</li><li>Email/SMS (smishing) templates</li><li>Compliance-ready reporting</li></ul></article>
-        <article class="card"><h3><span class="chip">IR</span>Incident Response & Recovery</h3><p>24/7 containment, forensics, and rapid rebuilds to minimize downtime and impact.</p><ul><li>Ransomware playbooks & evidence preservation</li><li>Root-cause analysis & hardening</li><li>Executive comms & board reporting</li></ul></article>
-        <article class="card"><h3><span class="chip">Intelligence</span>Dark Web Monitoring</h3><p>Continuous scans of markets, forums, and dumps for your domains, emails, and VIPs.</p><ul><li>Credential & data leak alerts</li><li>Insider chatter detection</li><li>Executive exposure reports</li></ul></article>
-        <article class="card"><h3><span class="chip">Access</span>2FA Setup & Hardening</h3><p>Deploy Duo Security and enforce strong, bypass-resistant MFA policies across apps.</p><ul><li>Organization-wide rollout</li><li>Conditional access policies</li><li>User onboarding & training</li></ul></article>
-        <article class="card"><h3><span class="chip">Assessment</span>Onsite Security Assessments</h3><p>Physical & network walkthroughs with prioritized remediation roadmaps.</p><ul><li>Server rooms & access control</li><li>Segmentation & wireless posture</li><li>Policy & process validation</li></ul></article>
-        <article class="card"><h3><span class="chip">Offensive</span>Penetration Testing</h3><p>Adversary-style testing across external, internal, web, wireless, and IoT.</p><ul><li>Exploit proof-of-concepts (safe)</li><li>Executive & technical reports</li><li>Retesting to validate fixes</li></ul></article>
-        <article class="card"><h3><span class="chip">Custom</span>SpiderBox™ & SpiderVPN</h3><p>Drop-boxes and secure tunnels for remote monitoring, testing, and access.</p><ul><li>Auto-provisioned client profiles</li><li>Honeypots & deception tech</li><li>Branded dashboards & tooling</li></ul></article>
+        <article class="card"><div class="scan"></div><h3><span class="chip">SIEM / XDR / NDR</span>ThreatWeb™ 24/7 SOC</h3><p>AI-assisted correlations across endpoints, servers, and cloud with automated active responses.</p><ul><li>Real-time dashboards & alerting</li><li>Active Response: block IPs, quarantine files, kill processes</li><li>Integrations: Sysmon, ClamAV, Malwarebytes, Windows/Linux/macOS</li></ul></article>
+        <article class="card"><div class="scan"></div><h3><span class="chip">Phishing</span>RedHook™ Simulations & Training</h3><p>Human-layer defense with realistic campaigns and role-based training.</p><ul><li>Risk scoring & coaching</li><li>Email/SMS (smishing) templates</li><li>Compliance-ready reporting</li></ul></article>
+        <article class="card"><div class="scan"></div><h3><span class="chip">IR</span>Incident Response & Recovery</h3><p>24/7 containment, forensics, and rapid rebuilds to minimize downtime and impact.</p><ul><li>Ransomware playbooks & evidence preservation</li><li>Root-cause analysis & hardening</li><li>Executive comms & board reporting</li></ul></article>
+        <article class="card"><div class="scan"></div><h3><span class="chip">Intelligence</span>Dark Web Monitoring</h3><p>Continuous scans of markets, forums, and dumps for your domains, emails, and VIPs.</p><ul><li>Credential & data leak alerts</li><li>Insider chatter detection</li><li>Executive exposure reports</li></ul></article>
+        <article class="card"><div class="scan"></div><h3><span class="chip">Access</span>2FA Setup & Hardening</h3><p>Deploy Duo Security and enforce strong, bypass-resistant MFA policies across apps.</p><ul><li>Organization-wide rollout</li><li>Conditional access policies</li><li>User onboarding & training</li></ul></article>
+        <article class="card"><div class="scan"></div><h3><span class="chip">Assessment</span>Onsite Security Assessments</h3><p>Physical & network walkthroughs with prioritized remediation roadmaps.</p><ul><li>Server rooms & access control</li><li>Segmentation & wireless posture</li><li>Policy & process validation</li></ul></article>
+        <article class="card"><div class="scan"></div><h3><span class="chip">Offensive</span>Penetration Testing</h3><p>Adversary-style testing across external, internal, web, wireless, and IoT.</p><ul><li>Exploit proof-of-concepts (safe)</li><li>Executive & technical reports</li><li>Retesting to validate fixes</li></ul></article>
+        <article class="card"><div class="scan"></div><h3><span class="chip">Custom</span>SpiderBox™ & SpiderVPN</h3><p>Drop-boxes and secure tunnels for remote monitoring, testing, and access.</p><ul><li>Auto-provisioned client profiles</li><li>Honeypots & deception tech</li><li>Branded dashboards & tooling</li></ul></article>
       </div>
     </section>
 
-    <section id="solutions" class="wrap">
+    <section id="solutions" class="wrap reveal">
       <h2>In-Depth Solutions</h2>
       <p class="sub">How your stack works together to stop threats fast.</p>
       <div class="split">
@@ -235,30 +259,30 @@
       </div>
     </section>
 
-    <section id="industries" class="wrap">
+    <section id="industries" class="wrap reveal">
       <h2>Built for Your Environment</h2>
       <p class="sub">We understand the realities of public education, healthcare, and fast-moving SMBs.</p>
       <div class="industries">
-        <article class="card"><h3>K-12 & Higher-Ed</h3><p>Protect students and staff while meeting audit requirements.</p><span class="tag">CIPA</span><span class="tag">FERPA</span><span class="tag">State Audits</span></article>
-        <article class="card"><h3>Healthcare</h3><p>Safeguard PHI and maintain uptime for patient care.</p><span class="tag">HIPAA</span><span class="tag">24/7 Monitoring</span><span class="tag">IR Playbooks</span></article>
-        <article class="card"><h3>Public & SMB</h3><p>Right-sized controls with enterprise discipline.</p><span class="tag">Zero Trust</span><span class="tag">Cloud</span><span class="tag">Endpoint</span></article>
+        <article class="card"><div class="scan"></div><h3>K-12 & Higher-Ed</h3><p>Protect students and staff while meeting audit requirements.</p><span class="tag">CIPA</span><span class="tag">FERPA</span><span class="tag">State Audits</span></article>
+        <article class="card"><div class="scan"></div><h3>Healthcare</h3><p>Safeguard PHI and maintain uptime for patient care.</p><span class="tag">HIPAA</span><span class="tag">24/7 Monitoring</span><span class="tag">IR Playbooks</span></article>
+        <article class="card"><div class="scan"></div><h3>Public & SMB</h3><p>Right-sized controls with enterprise discipline.</p><span class="tag">Zero Trust</span><span class="tag">Cloud</span><span class="tag">Endpoint</span></article>
       </div>
     </section>
 
-    <section id="compliance" class="wrap">
+    <section id="compliance" class="wrap reveal">
       <h2>Compliance & Frameworks</h2>
       <p class="sub">We map controls to the standards that matter to you and deliver evidence-ready reports.</p>
       <div class="compliance-grid">
-        <article class="card"><h3>HIPAA</h3><p>Security Rule implementation guide, audit logging, and breach response timelines.</p><div class="badge">Healthcare</div></article>
-        <article class="card"><h3>FERPA</h3><p>Student data protections, access controls, and vendor management for districts.</p><div class="badge">Education</div></article>
-        <article class="card"><h3>PCI-DSS</h3><p>Cardholder data segmentation and continuous vulnerability management.</p><div class="badge">Retail</div></article>
-        <article class="card"><h3>NIST CSF</h3><p>Identify, Protect, Detect, Respond, Recover — aligned to your maturity goals.</p><div class="badge">Framework</div></article>
-        <article class="card"><h3>CIS Controls</h3><p>Top 18 controls prioritized for risk reduction and fast wins.</p><div class="badge">Best Practices</div></article>
-        <article class="card"><h3>SOC 2 Mapping</h3><p>Policies, monitoring, and evidence workflows ready for auditor review.</p><div class="badge">Assurance</div></article>
+        <article class="card"><div class="scan"></div><h3>HIPAA</h3><p>Security Rule implementation guide, audit logging, and breach response timelines.</p><div class="badge">Healthcare</div></article>
+        <article class="card"><div class="scan"></div><h3>FERPA</h3><p>Student data protections, access controls, and vendor management for districts.</p><div class="badge">Education</div></article>
+        <article class="card"><div class="scan"></div><h3>PCI-DSS</h3><p>Cardholder data segmentation and continuous vulnerability management.</p><div class="badge">Retail</div></article>
+        <article class="card"><div class="scan"></div><h3>NIST CSF</h3><p>Identify, Protect, Detect, Respond, Recover — aligned to your maturity goals.</p><div class="badge">Framework</div></article>
+        <article class="card"><div class="scan"></div><h3>CIS Controls</h3><p>Top 18 controls prioritized for risk reduction and fast wins.</p><div class="badge">Best Practices</div></article>
+        <article class="card"><div class="scan"></div><h3>SOC 2 Mapping</h3><p>Policies, monitoring, and evidence workflows ready for auditor review.</p><div class="badge">Assurance</div></article>
       </div>
     </section>
 
-    <section id="integrations" class="wrap">
+    <section id="integrations" class="wrap reveal">
       <h2>Integrations & Tooling</h2>
       <p class="sub">We meet you where you are. Our platform connects with your identity, endpoints, and cloud.</p>
       <div class="stack">
@@ -275,7 +299,7 @@
       </div>
     </section>
 
-    <section id="faq" class="wrap">
+    <section id="faq" class="wrap reveal">
       <h2>FAQ</h2>
       <p class="sub">Quick answers to common questions. Ask us anything not covered here.</p>
       <details><summary>How fast can you start Incident Response?</summary><p>Right away. Call the IR line in the contact section 24/7 — we begin containment as we scope.</p></details>
@@ -284,7 +308,7 @@
       <details><summary>What does onboarding look like?</summary><p>Discovery → deployment plan → sensor rollout → baseline tuning → executive briefing with 30/60/90-day roadmap.</p></details>
     </section>
 
-    <section id="contact" class="wrap">
+    <section id="contact" class="wrap reveal">
       <h2>Become Unbreachable</h2>
       <p class="sub">Talk to a Spider Security expert today to design a defense that fits your mission. For immediate incident response, call any time.</p>
       <p style="text-align:center;margin:18px 0 26px;color:#bdbdbd">Email: <a href="mailto:info@spidersecurity.io" style="color:#fff;text-decoration:none;border-bottom:1px dashed #333">info@spidersecurity.io</a> · Phone: <a href="tel:+14237179259" style="color:#fff;text-decoration:none;border-bottom:1px dashed #333">(423) 717-9259</a></p>
@@ -325,6 +349,18 @@
       entries.forEach(e=>{ if(e.isIntersecting){ links.forEach(a=>a.classList.remove('active')); const id='#'+e.target.id; const a=links.find(l=>l.getAttribute('href')===id); a&&a.classList.add('active'); } });
     },{root:null,rootMargin:'-45% 0px -45% 0px',threshold:0});
     sections.forEach(s=>obs.observe(s));
+  })();
+
+  // ===== Scroll reveal =====
+  (function(){
+    const els=[...document.querySelectorAll('.reveal')];
+    els.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(18px)'; el.style.transition='opacity .6s ease, transform .6s ease'; });
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){ en.target.style.opacity='1'; en.target.style.transform='translateY(0)'; io.unobserve(en.target); }
+      })
+    },{threshold:.12});
+    els.forEach(el=>io.observe(el));
   })();
 
   // ===== Hero network canvas =====
@@ -386,4 +422,3 @@
   </script>
 </body>
 </html>
-
